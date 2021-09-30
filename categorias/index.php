@@ -50,7 +50,11 @@
 
                     while($categoria = mysqli_fetch_array($resultado)){
 
+                        echo $categoria["descricao"];
+
                     }
+
+                    exit;
 
                 ?>
 
