@@ -20,6 +20,6 @@ if($conexao === false){
 
 }
 
-echo '<pre>';
-var_dump($conexao);
-echo '</pre>';
+//echo '<pre>';
+//var_dump($conexao);
+//echo '</pre>';
