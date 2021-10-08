@@ -18,13 +18,13 @@ create table tbl_administrador(
     nome varchar(255) not null,
     usuario varchar(255) not null,
     senha varchar (255) not null
-);
+    );
 
 create table tbl_categoria (
     id int primary key auto_increment,
     descricao varchar(255) not null
 );
 
-alter table tbl_produto 
+alter table tbl_produto
 add column categoria_id int,
 add foreign key (categoria_id) references tbl_categoria(id);
