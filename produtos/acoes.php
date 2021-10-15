@@ -106,8 +106,31 @@
 
         return $erros;
     }
+
     
     switch ($_POST["acao"]) {
+
+        case 'deletar':
+
+            $produtoId = $_POST['produtoId'];
+
+            $sql = "SELECT imagem FROM tbl_produto WHERE id = $produtoId";
+
+            $resultado = mysqli_query($conexao, $sql);
+            
+            $produto = mysqli_fetch_array($resultado);
+    
+            $sql = "DELETE FROM tbl_produto WHERE id = $produtoId";
+    
+            $resultado = mysqli_query($conexao, $sql);
+
+            unlink("./fotos/" . $produto[0]);
+
+            // echo $produto[0]; exit;
+    
+            header('location: index.php');
+    
+            break;
 
         case 'inserir':
 
@@ -122,6 +145,8 @@
                 exit;
 
             }
+
+                
 
             //TRATAMENTO DA IMAGEM PARA UPLOAD:
 
