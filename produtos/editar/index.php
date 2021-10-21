@@ -38,7 +38,7 @@
          
           <input type="hidden" name="acao" value="editar" />
           
-          <input type="hidden" name="produtoId" value="" />
+          <input type="hidden" name="produtoId" value="<?php echo $produtoId ?>" />
           
           <h1>Editar Produto</h1>
           
