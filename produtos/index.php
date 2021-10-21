@@ -69,7 +69,7 @@
                         $valorParcela = $valorComDesconto / $qtdParcelas
                         
                 ?>
-
+                
                 <article class="card-produto">
 
                        <div class="acoes-produtos">
