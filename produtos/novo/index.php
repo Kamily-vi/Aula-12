@@ -1,23 +1,26 @@
 <?php
 
-session_start();
+  session_start();
 
-/* CONEXÃO COM O BANCO DE DADOS
+  /*
+  CONEXÃO COM O BANCO DE DADOS
+  
+  produto/novo
+  ../
+  produto/
+  ../
+  /dabase/conexao.php
 
-produto/novo 
-../
-/database/conexao.php */
+  */
+  require('../../database/conexao.php');
 
-require('../../database/conexao.php');
+  /*QUERY SQL*/
+  $sql = "SELECT * FROM tbl_categoria";
 
-//QUERRY SQL
-$sql = "SELECT * FROM tbl_categoria";
-
-//EXECUTAR A QUERY SQL NA BASE DE DADOS;
-$resultado = mysqli_query($conexao, $sql);
+  /*EXECUTAR A QUERY SQL NA BASE DE DADOS*/
+  $resultado = mysqli_query($conexao, $sql);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -34,6 +37,9 @@ $resultado = mysqli_query($conexao, $sql);
 
 <body>
 
+  <!-- INCLUSÃO DO COMPONENTE HEADER -->
+  <?php include('../../componentes/header/header.php'); ?>
+
   <div class="content">
 
     <section class="produtos-container">
@@ -48,26 +54,27 @@ $resultado = mysqli_query($conexao, $sql);
 
           <ul>
 
-          <?php
-             
-             if (isset($_SESSION["erros"])) {
-              
-              foreach ($_SESSION["erros"] as $erro) {
+            <?php
+            
+              if (isset($_SESSION["erros"])) {
                 
-                echo "<li> $erro </li>";
+                foreach ($_SESSION["erros"] as $erro) {
+                  
+                  echo "<li> $erro </li>";
+
+                }
+
+                unset($_SESSION["erros"]);
+
               }
-
-              unset($_SESSION["erros"]);
-
-             }
-          ?>
-
+            
+            ?>
 
           </ul>
 
           <div class="input-group span2">
             <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao" "">
+            <input type="text" name="descricao" id="descricao" >
           </div>
 
           <div class="input-group">
@@ -105,19 +112,16 @@ $resultado = mysqli_query($conexao, $sql);
             <label for="categoria">Categoria</label>
             <select id="categoria" name="categoria" >
               <option value="">SELECIONE</option>
-              
-              <!-- INICIO DA LISTAGEM DE CATEGORIA VINDAS DO BANCO -->
-              <?php
-                while ($categoria = mysqli_fetch_array($resultado)) {
-
-              ?>
-
-              <option value="<?php echo $categoria["id"]?>"><?php echo $categoria["descricao"]?></option>
-
-              <?php
-                }
-              ?>
-               <!-- FIM DA LISTAGEM DE CATEGORIAS VINDAS DO BANCO -->
+        
+                <!-- INICIO DA LISTAGEM DE CATEGORIAS VINDAS DO BANCO -->
+                <?php
+                
+                  while ($categoria = mysqli_fetch_array($resultado)) {
+   
+                ?>
+                <option value="<?php echo $categoria["id"]?>"><?php echo $categoria["descricao"]?></option>
+                <?php } ?>
+                <!-- FIM DA LISTAGEM DE CATEGORIAS VINDAS DO BANCO -->
               
             </select>
 
