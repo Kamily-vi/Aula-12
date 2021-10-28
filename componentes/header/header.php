@@ -4,14 +4,12 @@ $raiz = "/Kamily/Aula 12";
 
 ?>
 
-
-
 <link href="<?php echo $raiz?>/componentes/header/header.css" rel="stylesheet" />
 
 <header class="header">
 
     <figure>
-        <a href="/produtos">
+        <a href="<?php echo $raiz?>/produtos">
             <img src="<?php echo $raiz?>/imgs/logo.png" />
         </a>
     </figure>
@@ -47,7 +45,7 @@ $raiz = "/Kamily/Aula 12";
     <?php
     }
     ?>
-   
+
 </header>
 
 <script lang="javascript">
